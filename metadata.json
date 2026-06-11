@@ -1,5 +1,6 @@
 {
   "name": "Dissection Sliding Puzzle",
   "description": "A high-fidelity 2D sliding block puzzle game where you must maneuver a target red block to an exit zone by strategically rearranging surrounding blue obstacles.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": []
 }

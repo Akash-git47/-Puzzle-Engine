@@ -57,11 +57,16 @@ const Board: React.FC<BoardProps> = ({ pieces, onMovePiece, isSolved }) => {
           <div className="relative w-full h-full">
             {gridCells}
             
-            {/* Minimalist Goal Guide - Subtle indicator without text */}
+            {/* Minimalist Goal Guide - Elegant explicit destination slot */}
             <div 
-              className="absolute bottom-0 left-[84px] w-[168px] h-[84px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl pointer-events-none"
-              style={{ opacity: 0.3 }}
-            />
+              className="absolute bottom-0 left-[84px] w-[168px] h-[84px] p-2 bg-red-50/10 border-2 border-dashed border-red-400/40 rounded-xl pointer-events-none flex flex-col items-center justify-center transition-all duration-300"
+              style={{ opacity: isSolved ? 0.9 : 0.6 }}
+            >
+              <span className="text-[10px] text-red-500 font-black tracking-[0.2em] uppercase">EXIT GATE</span>
+              <span className="text-[8px] text-red-400/70 font-black uppercase tracking-widest text-center mt-0.5 leading-none">
+                Goal Destination
+              </span>
+            </div>
 
             {/* Pieces Layer */}
             {pieces.map((piece) => (
@@ -72,6 +77,24 @@ const Board: React.FC<BoardProps> = ({ pieces, onMovePiece, isSolved }) => {
                 isSolved={isSolved}
               />
             ))}
+
+            {/* Victory Overlay covers the game board when solved */}
+            {isSolved && (
+              <div className="absolute inset-x-0 inset-y-0 z-50 bg-slate-950/85 backdrop-blur-md rounded-xl flex flex-col items-center justify-center text-center p-4 animate-fade-in border border-white/10 shadow-2xl">
+                <div className="w-14 h-14 bg-gradient-to-tr from-rose-500 to-red-600 rounded-full flex items-center justify-center shadow-lg shadow-red-500/50 mb-3 animate-bounce">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-black text-white tracking-tight uppercase">Puzzle Solved!</h3>
+                <p className="text-slate-300 text-[11px] mt-1 max-w-[240px] leading-relaxed font-medium">
+                  The red target block successfully reached the bottom-center exit gate!
+                </p>
+                <div className="mt-4 flex flex-col items-center gap-1">
+                  <span className="text-[9px] text-slate-400 uppercase tracking-widest font-black">Escape Succeeded</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

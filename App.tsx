@@ -103,15 +103,39 @@ const App: React.FC = () => {
       {/* Content Container (Ensure it stays above background) */}
       <div className="relative z-10 flex flex-col items-center">
         {/* Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <h1 className="text-5xl font-black text-slate-800 tracking-tighter italic drop-shadow-sm">
             KNOT<span className="text-red-600">SLIDE</span>
           </h1>
           <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.2em] mt-1">Dissection Puzzle Engine</p>
         </div>
 
+        {/* Primary Goal Banner */}
+        <div className="w-full max-w-sm mb-6 bg-gradient-to-tr from-rose-500 to-red-600 text-white rounded-2xl p-5 shadow-lg shadow-red-200/40 border border-red-400/20 relative overflow-hidden group">
+          {/* Subtle background overlay */}
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500" />
+          <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-black/10 rounded-full blur-lg" />
+          
+          <div className="relative z-10 flex flex-col">
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="bg-white/20 text-white text-[9px] font-black uppercase tracking-[0.25em] px-2.5 py-1 rounded-full backdrop-blur-sm border border-white/10">
+                Core Objective
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+            </div>
+            
+            <h2 className="text-xl font-black tracking-tight leading-tight">
+              Bring the <span className="underline decoration-wavy decoration-white/60">RED TARGET</span> block to the bottom center!
+            </h2>
+            
+            <p className="text-red-100 text-[11px] mt-2 leading-relaxed font-semibold">
+              Slide the obstacle pieces to make way, then guide the double-width Red Block into the designated exit gate at the bottom of the board.
+            </p>
+          </div>
+        </div>
+
         {/* Stats Bar */}
-        <div className="w-full max-w-sm flex justify-between items-center mb-8 px-6 py-4 bg-white/80 backdrop-blur-sm shadow-xl shadow-slate-200/50 rounded-2xl border border-white">
+        <div className="w-full max-w-sm flex justify-between items-center mb-6 px-6 py-4 bg-white/80 backdrop-blur-sm shadow-xl shadow-slate-200/50 rounded-2xl border border-white">
           <div className="flex flex-col">
             <span className="text-[10px] uppercase text-slate-400 font-black tracking-widest">Move Count</span>
             <span className="text-3xl font-mono font-black text-slate-800 leading-none">{gameState.moves}</span>
